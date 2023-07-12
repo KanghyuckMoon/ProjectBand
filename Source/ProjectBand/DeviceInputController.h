@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "AudioCapture.h"
+#include "AudioCaptureComponent.h"
 #include "DeviceInputController.generated.h"
 
 /**
@@ -19,6 +21,18 @@ public:
 
 public:
 	virtual void SetupInputComponent() override;
+	virtual void BeginPlay() override;
+	//virtual void Tick(float DeltaTime) override;
+
+private:
+	UPROPERTY(VisibleAnywhere)
+		UAudioCapture* AudioCapture;
+	UPROPERTY(VisibleAnywhere)
+		UAudioCaptureComponent* AudioCaptureComponent;
+
+public:
+	UPROPERTY(EditAnywhere, Category = Mike)
+		float mikeLimit = 0.2f;
 
 public:
 	//Keyboard
@@ -41,6 +55,11 @@ protected:
 	void MouseClick();
 	void MouseIng();
 	void MouseUp();
+
+	//Mike
+	void UpdateMikeSoundSize(const TArray<uint8>& InAudioData, int32 NumChannels);
+	UFUNCTION(BlueprintCallable, Category = Mike)
+	void MikeUpdate(float value);
 	void MikeClick();
 	void MikeIng();
 	void MikeUp();
