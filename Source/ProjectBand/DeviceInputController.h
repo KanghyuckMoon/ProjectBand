@@ -36,16 +36,25 @@ public:
 
 public:
 	//Keyboard
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mike)
 	bool isClickKeyboard;
-	bool isIngKeyboard;
-	bool isUpKeyboard;
-	//Mouse
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mike)
+		bool isIngKeyboard;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mike)
+		bool isUpKeyboard;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mike)
 	bool isClickMouse;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mike)
 	bool isIngMouse;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mike)
 	bool isUpMouse;
-	//Mike
-	bool isClickMike;
-	bool isIngMike;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mike)
+		bool isClickMike;
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mike)
+		bool isIngMike;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mike)
 	bool isUpMike;
 
 protected:

@@ -105,7 +105,10 @@ void ADeviceInputController::MikeUpdate(float value)
 		{
 			MikeClick();
 		}
-		MikeIng();
+		else
+		{
+			MikeIng();
+		}
 		UE_LOG(LogTemp, Log, TEXT("UsingMike %f"), value);
 	}
 	else if (isClickMike || isIngMike)
