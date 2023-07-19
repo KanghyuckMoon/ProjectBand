@@ -24,12 +24,6 @@ public:
 	virtual void BeginPlay() override;
 	//virtual void Tick(float DeltaTime) override;
 
-private:
-	UPROPERTY(VisibleAnywhere)
-		UAudioCapture* AudioCapture;
-	UPROPERTY(VisibleAnywhere)
-		UAudioCaptureComponent* AudioCaptureComponent;
-
 public:
 	UPROPERTY(EditAnywhere, Category = Mike)
 		float mikeLimit = 0.2f;

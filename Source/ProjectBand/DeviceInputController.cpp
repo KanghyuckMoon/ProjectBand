@@ -7,8 +7,6 @@
 ADeviceInputController::ADeviceInputController()
 {
 	bShowMouseCursor = true;
-	AudioCaptureComponent = CreateDefaultSubobject<UAudioCaptureComponent>(TEXT("AudioCaptureComponent"));
-	AudioCapture = CreateDefaultSubobject<UAudioCapture>(TEXT("AudioCapture"));
 }
 
 void ADeviceInputController::SetupInputComponent()
@@ -29,56 +27,60 @@ void ADeviceInputController::SetupInputComponent()
 	//InputComponent->BindAction("InputMike", IE_Pressed, this, &ADeviceInputController::MikeClick);
 	//InputComponent->BindAction("InputMike", IE_Repeat, this, &ADeviceInputController::MikeIng);
 	//InputComponent->BindAction("InputMike", IE_Released, this, &ADeviceInputController::MikeUp);
-	AudioCaptureComponent->OnAudioEnvelopeValue.AddDynamic(this, &ADeviceInputController::MikeUpdate);
 }
 
 void ADeviceInputController::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// Set the audio capture properties
-	//AudioCaptureComponent->bCaptureOnAudioVolume = false;  // You can modify these settings as per your requirements
-	//AudioCaptureComponent->bCaptureOnMasterVolume = true;
-	//AudioCaptureComponent->bCaptureOutsideVolumes = true;
-
-	// Start capturing audio
-	AudioCapture->StartCapturingAudio();
-	//AudioCaptureComponent->OnAudioEnvelope.AddDynamic(this, &ADeviceInputController::UpdateMikeSoundSize);
 }
 
-//void ADeviceInputController::Tick(float DeltaTime)
-//{
-//	UpdateMikeSoundSize();
-//}
 
 void ADeviceInputController::KeyboardClick()
 {
 	UE_LOG(LogTemp, Log, TEXT("KeyboardClick"));
+	isClickKeyboard = true;
+	isIngKeyboard = false;
+	isUpKeyboard = false;
 }
 
 void ADeviceInputController::KeyboardIng()
 {
 	UE_LOG(LogTemp, Log, TEXT("KeyboardIng"));
+	isClickKeyboard = false;
+	isIngKeyboard = true;
+	isUpKeyboard = false;
 }
 
 void ADeviceInputController::KeyboardUp()
 {
 	UE_LOG(LogTemp, Log, TEXT("KeyboardUp"));
+	isClickKeyboard = false;
+	isIngKeyboard = false;
+	isUpKeyboard = true;
 }
 
 void ADeviceInputController::MouseClick()
 {
 	UE_LOG(LogTemp, Log, TEXT("MouseClick"));
+	isClickMouse = true;
+	isIngMouse = false;
+	isUpMouse = false;
 }
 
 void ADeviceInputController::MouseIng()
 {
 	UE_LOG(LogTemp, Log, TEXT("MouseIng"));
+	isClickMouse = false;
+	isIngMouse = true;
+	isUpMouse = false;
 }
 
 void ADeviceInputController::MouseUp()
 {
 	UE_LOG(LogTemp, Log, TEXT("MouseUp"));
+	isClickMouse = false;
+	isIngMouse = false;
+	isUpMouse = true;
 }
 
 void ADeviceInputController::UpdateMikeSoundSize(const TArray<uint8>& InAudioData, int32 NumChannels)
