@@ -22,12 +22,9 @@
 			]
 		},
 		{
-			"Name": "DatasmithC4DImporter",
+			"Name": "RhythmGamePlugin",
 			"Enabled": true,
-			"SupportedTargetPlatforms": [
-				"Win64",
-				"Mac"
-			]
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/b049d9708ec549efb876ced01fe316f6"
 		}
 	]
 }
