@@ -22,11 +22,20 @@ public:
 public:
 	virtual void SetupInputComponent() override;
 	virtual void BeginPlay() override;
-	//virtual void Tick(float DeltaTime) override;
+	virtual void Tick(float DeltaTime) override;
 
 public:
 	UPROPERTY(EditAnywhere, Category = Mike)
 		float mikeLimit = 0.2f;
+
+	UPROPERTY(EditAnywhere, Category = Mike)
+		float keyboardInputTime = 0.1f;
+
+	UPROPERTY(EditAnywhere, Category = Mike)
+		float mouseInputTime = 0.1f;
+
+		float curKeyboardInputTime = 0.0f;
+		float curMouseInputTime = 0.0f;
 
 public:
 	//Keyboard
