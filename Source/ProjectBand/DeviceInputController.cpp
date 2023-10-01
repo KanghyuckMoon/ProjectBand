@@ -34,6 +34,27 @@ void ADeviceInputController::BeginPlay()
 	Super::BeginPlay();
 }
 
+void ADeviceInputController::Tick(float DeltaTime)
+{
+	if (isClickKeyboard)
+	{
+		curKeyboardInputTime += DeltaTime;
+		if (curKeyboardInputTime >= keyboardInputTime)
+		{
+			KeyboardUp();
+		}
+	}
+
+
+	if (isClickMouse)
+	{
+		curMouseInputTime += DeltaTime;
+		if (curMouseInputTime >= mouseInputTime)
+		{
+			MouseUp();
+		}
+	}
+}
 
 void ADeviceInputController::KeyboardClick()
 {
@@ -57,6 +78,7 @@ void ADeviceInputController::KeyboardUp()
 	isClickKeyboard = false;
 	isIngKeyboard = false;
 	isUpKeyboard = true;
+	curKeyboardInputTime = 0.0f;
 }
 
 void ADeviceInputController::MouseClick()
@@ -81,6 +103,7 @@ void ADeviceInputController::MouseUp()
 	isClickMouse = false;
 	isIngMouse = false;
 	isUpMouse = true;
+	curMouseInputTime = 0.0f;
 }
 
 void ADeviceInputController::UpdateMikeSoundSize(const TArray<uint8>& InAudioData, int32 NumChannels)
