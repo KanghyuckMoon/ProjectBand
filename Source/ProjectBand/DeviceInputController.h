@@ -69,7 +69,6 @@ protected:
 	void MouseUp();
 
 	//Mike
-	void UpdateMikeSoundSize(const TArray<uint8>& InAudioData, int32 NumChannels);
 	UFUNCTION(BlueprintCallable, Category = Mike)
 	void MikeUpdate(float value);
 	void MikeClick();

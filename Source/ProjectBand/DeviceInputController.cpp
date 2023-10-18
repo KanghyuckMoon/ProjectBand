@@ -106,22 +106,6 @@ void ADeviceInputController::MouseUp()
 	curMouseInputTime = 0.0f;
 }
 
-void ADeviceInputController::UpdateMikeSoundSize(const TArray<uint8>& InAudioData, int32 NumChannels)
-{
-	TArray<float> AudioSamples;
-	float TotalSquaredSum = 0.0f;
-
-	// Calculate the sum of squared samples
-	for (float Sample : InAudioData)
-	{
-		TotalSquaredSum += Sample * Sample;
-	}
-
-	// Calculate the RMS value
-	float RMSValue = FMath::Sqrt(TotalSquaredSum / AudioSamples.Num());
-	MikeUpdate(RMSValue);
-}
-
 void ADeviceInputController::MikeUpdate(float value)
 {
 	if (value > mikeLimit)
